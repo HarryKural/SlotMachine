@@ -93,6 +93,8 @@ namespace SlotMachine
                 MessageBox.Show("You Won the $" + jackpot + " Jackpot!!", "Jackpot!!");
                 playerMoney += jackpot;
                 jackpot = 1000;
+                // set the text of jackpot textBox
+                JackpotTextBox.Text = jackpot.ToString();
             }
         }
 
@@ -127,6 +129,9 @@ namespace SlotMachine
             string[] betLine = { " ", " ", " " };
             int[] outCome = { 0, 0, 0 };
 
+            // create array of PictureBox to popluate them
+            PictureBox[] setReel = new PictureBox[] { ReelFirstPictureBox, ReelSecondPictureBox, ReelThirdPictureBox };
+
             for (var spin = 0; spin < 3; spin++)
             {
                 outCome[spin] = this.random.Next(65) + 1;
@@ -134,41 +139,49 @@ namespace SlotMachine
                 if (checkRange(outCome[spin], 1, 27))
                 {  // 41.5% probability
                     betLine[spin] = "blank";
+                    setReel[spin].Image = Properties.Resources.blank;
                     blanks++;
                 }
                 else if (checkRange(outCome[spin], 28, 37))
                 { // 15.4% probability
                     betLine[spin] = "Grapes";
+                    setReel[spin].Image = Properties.Resources.grapes;
                     grapes++;
                 }
                 else if (checkRange(outCome[spin], 38, 46))
                 { // 13.8% probability
                     betLine[spin] = "Banana";
+                    setReel[spin].Image = Properties.Resources.banana;
                     bananas++;
                 }
                 else if (checkRange(outCome[spin], 47, 54))
                 { // 12.3% probability
                     betLine[spin] = "Orange";
+                    setReel[spin].Image = Properties.Resources.orange;
                     oranges++;
                 }
                 else if (checkRange(outCome[spin], 55, 59))
                 { //  7.7% probability
                     betLine[spin] = "Cherry";
+                    setReel[spin].Image = Properties.Resources.cherry;
                     cherries++;
                 }
                 else if (checkRange(outCome[spin], 60, 62))
                 { //  4.6% probability
                     betLine[spin] = "Bar";
+                    setReel[spin].Image = Properties.Resources.bar;
                     bars++;
                 }
                 else if (checkRange(outCome[spin], 63, 64))
                 { //  3.1% probability
                     betLine[spin] = "Bell";
+                    setReel[spin].Image = Properties.Resources.bell;
                     bells++;
                 }
                 else if (checkRange(outCome[spin], 65, 65))
                 { //  1.5% probability
                     betLine[spin] = "Seven";
+                    setReel[spin].Image = Properties.Resources.seven;
                     sevens++;
                 }
 
@@ -256,40 +269,70 @@ namespace SlotMachine
 
         }
 
-        private void SpinPictureBox_Click(object sender, EventArgs e)
+        private void _pictureBoxButtonHandler(object sender, EventArgs e)
         {
-            playerBet = 10; // default bet amount
+            PictureBox ClickHandler = sender as PictureBox;
 
-            if (playerMoney == 0)
+            switch (ClickHandler.Tag.ToString())
             {
-                if (MessageBox.Show("You ran out of Money! \nDo you want to play again?", "Out of Money!", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    resetAll();
-                    showPlayerStats();
-                }
-            }
-            else if (playerBet > playerMoney)
-            {
-                MessageBox.Show("You don't have enough Money to place that bet.", "Insufficient Funds");
-            }
-            else if (playerBet < 0)
-            {
-                MessageBox.Show("All bets must be a positive $ amount.", "Incorrect Bet");
-            }
-            else if (playerBet <= playerMoney)
-            {
-                spinResult = Reels();
-                fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
-                MessageBox.Show(fruits);
-                determineWinnings();
-                turn++;
-                showPlayerStats();
-            }
-            else
-            {
-                MessageBox.Show("Please enter a valid bet amount");
+                case "Spin":
+                    playerBet = 10; // default bet amount
+
+                    if (playerMoney == 0)
+                    {
+                        if (MessageBox.Show("You ran out of Money! \nDo you want to play again?", "Out of Money!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            resetAll();
+                            showPlayerStats();
+                        }
+                    }
+                    else if (playerBet > playerMoney)
+                    {
+                        MessageBox.Show("You don't have enough Money to place that bet.", "Insufficient Funds");
+                    }
+                    else if (playerBet < 0)
+                    {
+                        MessageBox.Show("All bets must be a positive $ amount.", "Incorrect Bet");
+                    }
+                    else if (playerBet <= playerMoney)
+                    {
+                        spinResult = Reels();
+                        fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
+                        MessageBox.Show(fruits);
+                        determineWinnings();
+                        turn++;
+                        showPlayerStats();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter a valid bet amount");
+                    }
+                    break;
+                
+                case "Reset":
+                    // showing up confirm message when reset (picture) button clicked
+                    DialogResult reset = MessageBox.Show("Are You Sure you want to reset the game?" + Environment.NewLine + "Your current progress will be lost." , "Reset the Game", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                    // Closes the program if OK clicked
+                    if (reset == DialogResult.OK)
+                    {
+                        resetAll();
+                    }
+                    break;
+                
+                case "Power":
+                    // showing up confirm message when power (picture) button clicked
+                    DialogResult exit = MessageBox.Show("Are You Sure you want to exit the game?", "Exit the game", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                    // Closes the program if OK clicked
+                    if (exit == DialogResult.OK)
+                    {
+                        Application.Exit();
+                    }
+                    break;
             }
         }
+        
     }
 
 }

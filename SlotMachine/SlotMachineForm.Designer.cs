@@ -72,7 +72,8 @@
             this.SpinPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.SpinPictureBox.TabIndex = 6;
             this.SpinPictureBox.TabStop = false;
-            this.SpinPictureBox.Click += new System.EventHandler(this.SpinPictureBox_Click);
+            this.SpinPictureBox.Tag = "Spin";
+            this.SpinPictureBox.Click += new System.EventHandler(this._pictureBoxButtonHandler);
             // 
             // Bet1PictureBox
             // 
@@ -172,6 +173,8 @@
             this.ResetPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ResetPictureBox.TabIndex = 15;
             this.ResetPictureBox.TabStop = false;
+            this.ResetPictureBox.Tag = "Reset";
+            this.ResetPictureBox.Click += new System.EventHandler(this._pictureBoxButtonHandler);
             // 
             // JackpotTextBox
             // 
@@ -235,6 +238,8 @@
             this.PowerButtonPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PowerButtonPictureBox.TabIndex = 20;
             this.PowerButtonPictureBox.TabStop = false;
+            this.PowerButtonPictureBox.Tag = "Power";
+            this.PowerButtonPictureBox.Click += new System.EventHandler(this._pictureBoxButtonHandler);
             // 
             // ReelFirstPictureBox
             // 
@@ -242,6 +247,7 @@
             this.ReelFirstPictureBox.Location = new System.Drawing.Point(77, 254);
             this.ReelFirstPictureBox.Name = "ReelFirstPictureBox";
             this.ReelFirstPictureBox.Size = new System.Drawing.Size(81, 83);
+            this.ReelFirstPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ReelFirstPictureBox.TabIndex = 21;
             this.ReelFirstPictureBox.TabStop = false;
             // 
@@ -251,6 +257,7 @@
             this.ReelSecondPictureBox.Location = new System.Drawing.Point(189, 254);
             this.ReelSecondPictureBox.Name = "ReelSecondPictureBox";
             this.ReelSecondPictureBox.Size = new System.Drawing.Size(81, 83);
+            this.ReelSecondPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ReelSecondPictureBox.TabIndex = 22;
             this.ReelSecondPictureBox.TabStop = false;
             // 
@@ -260,6 +267,7 @@
             this.ReelThirdPictureBox.Location = new System.Drawing.Point(302, 254);
             this.ReelThirdPictureBox.Name = "ReelThirdPictureBox";
             this.ReelThirdPictureBox.Size = new System.Drawing.Size(81, 83);
+            this.ReelThirdPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ReelThirdPictureBox.TabIndex = 23;
             this.ReelThirdPictureBox.TabStop = false;
             // 
