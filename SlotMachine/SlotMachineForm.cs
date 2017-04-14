@@ -38,6 +38,9 @@ namespace SlotMachine
         public SlotMachineForm()
         {
             InitializeComponent();
+            // display text in jackpot & credits textBoxes
+            JackpotTextBox.Text = "$" + jackpot.ToString();
+            TotalCreditsTextBox.Text = "$" + playerMoney.ToString();
         }
 
         /* Utility function to show Player Stats */
@@ -102,7 +105,8 @@ namespace SlotMachine
         private void showWinMessage()
         {
             playerMoney += winnings;
-            MessageBox.Show("You Won: $" + winnings, "Winner!");
+            WinnerPaidTextBox.Text = "$" + winnings;
+         // MessageBox.Show("You Won: $" + winnings, "Winner!");
             resetFruitTally();
             checkJackPot();
         }
@@ -111,7 +115,8 @@ namespace SlotMachine
         private void showLossMessage()
         {
             playerMoney -= playerBet;
-            MessageBox.Show("You Lost!", "Loss!");
+            WinnerPaidTextBox.Text = "You Lost!";
+         // MessageBox.Show("You Lost!", "Loss!");
             resetFruitTally();
         }
 
@@ -298,7 +303,7 @@ namespace SlotMachine
                     {
                         spinResult = Reels();
                         fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
-                        MessageBox.Show(fruits);
+                     // MessageBox.Show(fruits);
                         determineWinnings();
                         turn++;
                         showPlayerStats();
