@@ -83,6 +83,14 @@ namespace SlotMachine
             winNumber = 0;
             lossNumber = 0;
             winRatio = 0.0f;
+
+            // reset WinnerPaid textBox
+            WinnerPaidTextBox.Text = null;
+
+            // reset the Reel pictureboxes
+            ReelFirstPictureBox.Image = null;
+            ReelSecondPictureBox.Image = null;
+            ReelThirdPictureBox.Image = null;
         }
 
         /* Check to see if the player won the jackpot */
