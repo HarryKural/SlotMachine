@@ -314,7 +314,6 @@ namespace SlotMachine
                      // MessageBox.Show(fruits);
                         determineWinnings();
                         turn++;
-                        showPlayerStats();
                     }
                     else
                     {
@@ -342,6 +341,10 @@ namespace SlotMachine
                     {
                         Application.Exit();
                     }
+                    break;
+
+                case "Player Stats":
+                    showPlayerStats();
                     break;
             }
         }
