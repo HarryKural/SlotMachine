@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Media;
 using System.Windows.Forms;
 
 namespace SlotMachine
@@ -38,9 +39,18 @@ namespace SlotMachine
         public SlotMachineForm()
         {
             InitializeComponent();
+        }
+
+        private void SlotMachineForm_Load(object sender, EventArgs e)
+        {
             // display text in jackpot & credits textBoxes
-            JackpotTextBox.Text = "$" + jackpot.ToString();
-            TotalCreditsTextBox.Text = "$" + playerMoney.ToString();
+            JackpotTextBox.Text = jackpot.ToString();
+            TotalCreditsTextBox.Text = playerMoney.ToString();
+
+            // reset the Reel pictureboxes
+            ReelFirstPictureBox.Image = Properties.Resources.blank;
+            ReelSecondPictureBox.Image = Properties.Resources.blank;
+            ReelThirdPictureBox.Image = Properties.Resources.blank;
         }
 
         /* Utility function to show Player Stats */
@@ -58,7 +68,7 @@ namespace SlotMachine
             stats += ("Loss Ratio: " + (lossRatio * 100) + "%\n");
             MessageBox.Show(stats, "Player Stats");
         }
-
+        
         /* Utility function to reset all fruit tallies*/
         private void resetFruitTally()
         {
@@ -88,9 +98,9 @@ namespace SlotMachine
             WinnerPaidTextBox.Text = null;
 
             // reset the Reel pictureboxes
-            ReelFirstPictureBox.Image = null;
-            ReelSecondPictureBox.Image = null;
-            ReelThirdPictureBox.Image = null;
+            ReelFirstPictureBox.Image = Properties.Resources.blank;
+            ReelSecondPictureBox.Image = Properties.Resources.blank;
+            ReelThirdPictureBox.Image = Properties.Resources.blank;
         }
 
         /* Check to see if the player won the jackpot */
@@ -113,7 +123,7 @@ namespace SlotMachine
         private void showWinMessage()
         {
             playerMoney += winnings;
-            WinnerPaidTextBox.Text = "$" + winnings;
+            WinnerPaidTextBox.Text = "$ " + winnings;
          // MessageBox.Show("You Won: $" + winnings, "Winner!");
             resetFruitTally();
             checkJackPot();
@@ -310,10 +320,10 @@ namespace SlotMachine
                     else if (playerBet <= playerMoney)
                     {
                         spinResult = Reels();
-                        fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
-                     // MessageBox.Show(fruits);
                         determineWinnings();
                         turn++;
+                        // fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
+                        // MessageBox.Show(fruits);
                     }
                     else
                     {
@@ -345,6 +355,44 @@ namespace SlotMachine
 
                 case "Player Stats":
                     showPlayerStats();
+                    break;
+            }
+        }
+
+        private void _checkCredits()
+        {
+            
+        }
+
+        private void _betHandler(object sender, EventArgs e)
+        {
+            PictureBox PlaceBet = sender as PictureBox;
+
+            switch (PlaceBet.Tag.ToString())
+            {
+                case "Bet1":
+
+                    break;
+
+                case "Bet2":
+                    break;
+
+                case "Bet5":
+                    break;
+
+                case "Bet10":
+                    break;
+
+                case "Bet25":
+                    break;
+
+                case "Bet50":
+                    break;
+
+                case "Bet100":
+                    break;
+
+                case "Bet500":
                     break;
             }
         }

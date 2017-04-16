@@ -182,12 +182,12 @@
             // 
             this.JackpotTextBox.BackColor = System.Drawing.Color.Black;
             this.JackpotTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.JackpotTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.JackpotTextBox.Font = new System.Drawing.Font("Copperplate Gothic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.JackpotTextBox.ForeColor = System.Drawing.Color.Red;
             this.JackpotTextBox.Location = new System.Drawing.Point(184, 164);
             this.JackpotTextBox.Name = "JackpotTextBox";
             this.JackpotTextBox.ReadOnly = true;
-            this.JackpotTextBox.Size = new System.Drawing.Size(98, 19);
+            this.JackpotTextBox.Size = new System.Drawing.Size(98, 18);
             this.JackpotTextBox.TabIndex = 16;
             this.JackpotTextBox.TabStop = false;
             this.JackpotTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -196,12 +196,12 @@
             // 
             this.BetTextBox.BackColor = System.Drawing.Color.Black;
             this.BetTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BetTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BetTextBox.Font = new System.Drawing.Font("Copperplate Gothic Bold", 12F);
             this.BetTextBox.ForeColor = System.Drawing.Color.Red;
             this.BetTextBox.Location = new System.Drawing.Point(201, 376);
             this.BetTextBox.Name = "BetTextBox";
             this.BetTextBox.ReadOnly = true;
-            this.BetTextBox.Size = new System.Drawing.Size(56, 19);
+            this.BetTextBox.Size = new System.Drawing.Size(56, 18);
             this.BetTextBox.TabIndex = 18;
             this.BetTextBox.TabStop = false;
             this.BetTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -210,12 +210,12 @@
             // 
             this.WinnerPaidTextBox.BackColor = System.Drawing.Color.Black;
             this.WinnerPaidTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.WinnerPaidTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WinnerPaidTextBox.Font = new System.Drawing.Font("Copperplate Gothic Bold", 12F);
             this.WinnerPaidTextBox.ForeColor = System.Drawing.Color.Red;
             this.WinnerPaidTextBox.Location = new System.Drawing.Point(289, 376);
             this.WinnerPaidTextBox.Name = "WinnerPaidTextBox";
             this.WinnerPaidTextBox.ReadOnly = true;
-            this.WinnerPaidTextBox.Size = new System.Drawing.Size(98, 19);
+            this.WinnerPaidTextBox.Size = new System.Drawing.Size(98, 18);
             this.WinnerPaidTextBox.TabIndex = 19;
             this.WinnerPaidTextBox.TabStop = false;
             this.WinnerPaidTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -224,12 +224,12 @@
             // 
             this.TotalCreditsTextBox.BackColor = System.Drawing.Color.Black;
             this.TotalCreditsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TotalCreditsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalCreditsTextBox.Font = new System.Drawing.Font("Copperplate Gothic Bold", 12F);
             this.TotalCreditsTextBox.ForeColor = System.Drawing.Color.Red;
             this.TotalCreditsTextBox.Location = new System.Drawing.Point(73, 376);
             this.TotalCreditsTextBox.Name = "TotalCreditsTextBox";
             this.TotalCreditsTextBox.ReadOnly = true;
-            this.TotalCreditsTextBox.Size = new System.Drawing.Size(98, 19);
+            this.TotalCreditsTextBox.Size = new System.Drawing.Size(98, 18);
             this.TotalCreditsTextBox.TabIndex = 17;
             this.TotalCreditsTextBox.TabStop = false;
             this.TotalCreditsTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -323,6 +323,7 @@
             this.Name = "SlotMachineForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Slot Machine";
+            this.Load += new System.EventHandler(this.SlotMachineForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SpinPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Bet1PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Bet2PictureBox)).EndInit();
