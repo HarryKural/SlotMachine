@@ -1,4 +1,18 @@
-﻿using System;
+﻿// __________________________________________________________________________________________________
+// App name:           Slot Machine
+// Author's name:      Harshit Sharma
+// Student Number#:    200333254
+// App Creation Date:  April 14, 2017
+// Last Modified Date: April 16, 2017
+// Professor:          Tom Tsiliopoulos
+// Rapid Application Development - Assignment 5
+// App description:    This application allows the user to play Slot Machine game which includes
+//                     betting and then winning or losing, user is provided with some credits to get
+//                     started and this is made by C# windows forms, using different graphics to give
+//                     it feel of a real game.
+// ___________________________________________________________________________________________________
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
