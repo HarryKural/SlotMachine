@@ -46,6 +46,8 @@
             this.ReelFirstPictureBox = new System.Windows.Forms.PictureBox();
             this.ReelSecondPictureBox = new System.Windows.Forms.PictureBox();
             this.ReelThirdPictureBox = new System.Windows.Forms.PictureBox();
+            this.PlayerStatsButton = new System.Windows.Forms.Button();
+            this.ResetBetButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SpinPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Bet1PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Bet2PictureBox)).BeginInit();
@@ -291,6 +293,34 @@
             this.ReelThirdPictureBox.TabIndex = 23;
             this.ReelThirdPictureBox.TabStop = false;
             // 
+            // PlayerStatsButton
+            // 
+            this.PlayerStatsButton.BackColor = System.Drawing.Color.Yellow;
+            this.PlayerStatsButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayerStatsButton.ForeColor = System.Drawing.Color.Black;
+            this.PlayerStatsButton.Location = new System.Drawing.Point(315, 102);
+            this.PlayerStatsButton.Name = "PlayerStatsButton";
+            this.PlayerStatsButton.Size = new System.Drawing.Size(91, 23);
+            this.PlayerStatsButton.TabIndex = 24;
+            this.PlayerStatsButton.Tag = "Player Stats";
+            this.PlayerStatsButton.Text = "Player Stats";
+            this.PlayerStatsButton.UseVisualStyleBackColor = false;
+            this.PlayerStatsButton.Click += new System.EventHandler(this._buttonHandler);
+            // 
+            // ResetBetButton
+            // 
+            this.ResetBetButton.BackColor = System.Drawing.Color.Yellow;
+            this.ResetBetButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResetBetButton.ForeColor = System.Drawing.Color.Black;
+            this.ResetBetButton.Location = new System.Drawing.Point(315, 154);
+            this.ResetBetButton.Name = "ResetBetButton";
+            this.ResetBetButton.Size = new System.Drawing.Size(91, 23);
+            this.ResetBetButton.TabIndex = 25;
+            this.ResetBetButton.Tag = "Reset Bet";
+            this.ResetBetButton.Text = "Reset Bet";
+            this.ResetBetButton.UseVisualStyleBackColor = false;
+            this.ResetBetButton.Click += new System.EventHandler(this._buttonHandler);
+            // 
             // SlotMachineForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -299,6 +329,8 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(462, 533);
             this.ControlBox = false;
+            this.Controls.Add(this.ResetBetButton);
+            this.Controls.Add(this.PlayerStatsButton);
             this.Controls.Add(this.ReelThirdPictureBox);
             this.Controls.Add(this.ReelSecondPictureBox);
             this.Controls.Add(this.ReelFirstPictureBox);
@@ -362,5 +394,7 @@
         private System.Windows.Forms.PictureBox ReelFirstPictureBox;
         private System.Windows.Forms.PictureBox ReelSecondPictureBox;
         private System.Windows.Forms.PictureBox ReelThirdPictureBox;
+        private System.Windows.Forms.Button PlayerStatsButton;
+        private System.Windows.Forms.Button ResetBetButton;
     }
 }

@@ -345,7 +345,22 @@ namespace SlotMachine
             }
         }
         
-       
+        private void _buttonHandler(object sender, EventArgs e)
+        {
+            Button ButtonClickHandler = sender as Button;
+
+            switch (ButtonClickHandler.Tag.ToString())
+            {
+                case "Player Stats":
+                    showPlayerStats();
+                    break;
+
+                case "Reset Bet":
+                    playerBet = 0;
+                    BetTextBox.Text = playerBet.ToString();
+                    break;
+            }
+        }
 
         private void _betHandler(object sender, EventArgs e)
         {
