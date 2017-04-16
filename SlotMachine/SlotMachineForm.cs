@@ -18,7 +18,7 @@ namespace SlotMachine
         private int winnings = 0;
         private int jackpot = 5000;
         private float turn = 0.0f;
-        private int playerBet = 0;
+        private int playerBet = 10;
         private float winNumber = 0.0f;
         private float lossNumber = 0.0f;
         private string[] spinResult;
@@ -40,19 +40,7 @@ namespace SlotMachine
         {
             InitializeComponent();
         }
-
-        private void SlotMachineForm_Load(object sender, EventArgs e)
-        {
-            // display text in jackpot & credits textBoxes
-            JackpotTextBox.Text = jackpot.ToString();
-            TotalCreditsTextBox.Text = playerMoney.ToString();
-
-            // reset the Reel pictureboxes
-            ReelFirstPictureBox.Image = Properties.Resources.blank;
-            ReelSecondPictureBox.Image = Properties.Resources.blank;
-            ReelThirdPictureBox.Image = Properties.Resources.blank;
-        }
-
+        
         /* Utility function to show Player Stats */
         private void showPlayerStats()
         {
@@ -89,13 +77,16 @@ namespace SlotMachine
             winnings = 0;
             jackpot = 5000;
             turn = 0;
-            playerBet = 0;
+            playerBet = 10;
             winNumber = 0;
             lossNumber = 0;
             winRatio = 0.0f;
 
-            // reset WinnerPaid textBox
+            // reset textBox
             WinnerPaidTextBox.Text = null;
+            BetTextBox.Text = playerBet.ToString();
+            TotalCreditsTextBox.Text = playerMoney.ToString();
+            JackpotTextBox.Text = jackpot.ToString();
 
             // reset the Reel pictureboxes
             ReelFirstPictureBox.Image = Properties.Resources.blank;
@@ -146,7 +137,7 @@ namespace SlotMachine
         }
 
         /* When this function is called it determines the betLine results.
-    e.g. Bar - Orange - Banana */
+            e.g. Bar - Orange - Banana */
         private string[] Reels()
         {
             string[] betLine = { " ", " ", " " };
@@ -289,17 +280,15 @@ namespace SlotMachine
                 lossNumber++;
                 showLossMessage();
             }
-
         }
 
         private void _pictureBoxButtonHandler(object sender, EventArgs e)
         {
-            PictureBox ClickHandler = sender as PictureBox;
+            PictureBox PictureClickHandler = sender as PictureBox;
 
-            switch (ClickHandler.Tag.ToString())
+            switch (PictureClickHandler.Tag.ToString())
             {
                 case "Spin":
-                    playerBet = 10; // default bet amount
 
                     if (playerMoney == 0)
                     {
@@ -313,7 +302,7 @@ namespace SlotMachine
                     {
                         MessageBox.Show("You don't have enough Money to place that bet.", "Insufficient Funds");
                     }
-                    else if (playerBet < 0)
+                    else if (playerBet <= 0)
                     {
                         MessageBox.Show("All bets must be a positive $ amount.", "Incorrect Bet");
                     }
@@ -322,6 +311,7 @@ namespace SlotMachine
                         spinResult = Reels();
                         determineWinnings();
                         turn++;
+                        TotalCreditsTextBox.Text = playerMoney.ToString();
                         // fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
                         // MessageBox.Show(fruits);
                     }
@@ -352,51 +342,31 @@ namespace SlotMachine
                         Application.Exit();
                     }
                     break;
-
-                case "Player Stats":
-                    showPlayerStats();
-                    break;
             }
         }
-
-        private void _checkCredits()
-        {
-            
-        }
+        
+       
 
         private void _betHandler(object sender, EventArgs e)
         {
             PictureBox PlaceBet = sender as PictureBox;
 
-            switch (PlaceBet.Tag.ToString())
-            {
-                case "Bet1":
-
-                    break;
-
-                case "Bet2":
-                    break;
-
-                case "Bet5":
-                    break;
-
-                case "Bet10":
-                    break;
-
-                case "Bet25":
-                    break;
-
-                case "Bet50":
-                    break;
-
-                case "Bet100":
-                    break;
-
-                case "Bet500":
-                    break;
-            }
+            playerBet = Int16.Parse(PlaceBet.Tag.ToString());
+            
+            BetTextBox.Text = playerBet.ToString();
         }
-        
-    }
 
+        private void SlotMachineForm_Load(object sender, EventArgs e)
+        {
+            // display text in jackpot & credits textBoxes
+            JackpotTextBox.Text = jackpot.ToString();
+            TotalCreditsTextBox.Text = playerMoney.ToString();
+            BetTextBox.Text = playerBet.ToString();
+
+            // set the Reel pictureboxes as BLANK image
+            ReelFirstPictureBox.Image = Properties.Resources.blank;
+            ReelSecondPictureBox.Image = Properties.Resources.blank;
+            ReelThirdPictureBox.Image = Properties.Resources.blank;
+        }
+    }
 }

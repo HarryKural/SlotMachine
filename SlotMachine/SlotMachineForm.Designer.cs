@@ -46,7 +46,6 @@
             this.ReelFirstPictureBox = new System.Windows.Forms.PictureBox();
             this.ReelSecondPictureBox = new System.Windows.Forms.PictureBox();
             this.ReelThirdPictureBox = new System.Windows.Forms.PictureBox();
-            this.PlayerStatsPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.SpinPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Bet1PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Bet2PictureBox)).BeginInit();
@@ -61,16 +60,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReelFirstPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReelSecondPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReelThirdPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PlayerStatsPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // SpinPictureBox
             // 
             this.SpinPictureBox.BackColor = System.Drawing.Color.Transparent;
             this.SpinPictureBox.Image = global::SlotMachine.Properties.Resources.spin;
-            this.SpinPictureBox.Location = new System.Drawing.Point(331, 430);
+            this.SpinPictureBox.Location = new System.Drawing.Point(331, 436);
             this.SpinPictureBox.Name = "SpinPictureBox";
-            this.SpinPictureBox.Size = new System.Drawing.Size(72, 70);
+            this.SpinPictureBox.Size = new System.Drawing.Size(65, 57);
             this.SpinPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.SpinPictureBox.TabIndex = 6;
             this.SpinPictureBox.TabStop = false;
@@ -87,6 +85,8 @@
             this.Bet1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Bet1PictureBox.TabIndex = 7;
             this.Bet1PictureBox.TabStop = false;
+            this.Bet1PictureBox.Tag = "1";
+            this.Bet1PictureBox.Click += new System.EventHandler(this._betHandler);
             // 
             // Bet2PictureBox
             // 
@@ -98,6 +98,8 @@
             this.Bet2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Bet2PictureBox.TabIndex = 8;
             this.Bet2PictureBox.TabStop = false;
+            this.Bet2PictureBox.Tag = "2";
+            this.Bet2PictureBox.Click += new System.EventHandler(this._betHandler);
             // 
             // Bet5PictureBox
             // 
@@ -109,6 +111,8 @@
             this.Bet5PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Bet5PictureBox.TabIndex = 9;
             this.Bet5PictureBox.TabStop = false;
+            this.Bet5PictureBox.Tag = "5";
+            this.Bet5PictureBox.Click += new System.EventHandler(this._betHandler);
             // 
             // Bet10PictureBox
             // 
@@ -120,6 +124,8 @@
             this.Bet10PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Bet10PictureBox.TabIndex = 10;
             this.Bet10PictureBox.TabStop = false;
+            this.Bet10PictureBox.Tag = "10";
+            this.Bet10PictureBox.Click += new System.EventHandler(this._betHandler);
             // 
             // Bet500PictureBox
             // 
@@ -131,6 +137,8 @@
             this.Bet500PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Bet500PictureBox.TabIndex = 14;
             this.Bet500PictureBox.TabStop = false;
+            this.Bet500PictureBox.Tag = "500";
+            this.Bet500PictureBox.Click += new System.EventHandler(this._betHandler);
             // 
             // Bet100PictureBox
             // 
@@ -142,6 +150,8 @@
             this.Bet100PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Bet100PictureBox.TabIndex = 13;
             this.Bet100PictureBox.TabStop = false;
+            this.Bet100PictureBox.Tag = "100";
+            this.Bet100PictureBox.Click += new System.EventHandler(this._betHandler);
             // 
             // Bet50PictureBox
             // 
@@ -153,6 +163,8 @@
             this.Bet50PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Bet50PictureBox.TabIndex = 12;
             this.Bet50PictureBox.TabStop = false;
+            this.Bet50PictureBox.Tag = "50";
+            this.Bet50PictureBox.Click += new System.EventHandler(this._betHandler);
             // 
             // Bet25PictureBox
             // 
@@ -164,14 +176,16 @@
             this.Bet25PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Bet25PictureBox.TabIndex = 11;
             this.Bet25PictureBox.TabStop = false;
+            this.Bet25PictureBox.Tag = "25";
+            this.Bet25PictureBox.Click += new System.EventHandler(this._betHandler);
             // 
             // ResetPictureBox
             // 
             this.ResetPictureBox.BackColor = System.Drawing.Color.Transparent;
             this.ResetPictureBox.Image = global::SlotMachine.Properties.Resources.reset;
-            this.ResetPictureBox.Location = new System.Drawing.Point(254, 430);
+            this.ResetPictureBox.Location = new System.Drawing.Point(254, 436);
             this.ResetPictureBox.Name = "ResetPictureBox";
-            this.ResetPictureBox.Size = new System.Drawing.Size(71, 67);
+            this.ResetPictureBox.Size = new System.Drawing.Size(71, 57);
             this.ResetPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ResetPictureBox.TabIndex = 15;
             this.ResetPictureBox.TabStop = false;
@@ -238,7 +252,7 @@
             // 
             this.PowerButtonPictureBox.BackColor = System.Drawing.Color.Transparent;
             this.PowerButtonPictureBox.Image = global::SlotMachine.Properties.Resources.powerbutton;
-            this.PowerButtonPictureBox.Location = new System.Drawing.Point(63, 113);
+            this.PowerButtonPictureBox.Location = new System.Drawing.Point(46, 99);
             this.PowerButtonPictureBox.Name = "PowerButtonPictureBox";
             this.PowerButtonPictureBox.Size = new System.Drawing.Size(56, 56);
             this.PowerButtonPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -277,19 +291,6 @@
             this.ReelThirdPictureBox.TabIndex = 23;
             this.ReelThirdPictureBox.TabStop = false;
             // 
-            // PlayerStatsPictureBox
-            // 
-            this.PlayerStatsPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.PlayerStatsPictureBox.Image = global::SlotMachine.Properties.Resources.player_stats_button;
-            this.PlayerStatsPictureBox.Location = new System.Drawing.Point(320, 124);
-            this.PlayerStatsPictureBox.Name = "PlayerStatsPictureBox";
-            this.PlayerStatsPictureBox.Size = new System.Drawing.Size(88, 32);
-            this.PlayerStatsPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PlayerStatsPictureBox.TabIndex = 24;
-            this.PlayerStatsPictureBox.TabStop = false;
-            this.PlayerStatsPictureBox.Tag = "Player Stats";
-            this.PlayerStatsPictureBox.Click += new System.EventHandler(this._pictureBoxButtonHandler);
-            // 
             // SlotMachineForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -298,7 +299,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(462, 533);
             this.ControlBox = false;
-            this.Controls.Add(this.PlayerStatsPictureBox);
             this.Controls.Add(this.ReelThirdPictureBox);
             this.Controls.Add(this.ReelSecondPictureBox);
             this.Controls.Add(this.ReelFirstPictureBox);
@@ -338,7 +338,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReelFirstPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReelSecondPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReelThirdPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PlayerStatsPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -363,6 +362,5 @@
         private System.Windows.Forms.PictureBox ReelFirstPictureBox;
         private System.Windows.Forms.PictureBox ReelSecondPictureBox;
         private System.Windows.Forms.PictureBox ReelThirdPictureBox;
-        private System.Windows.Forms.PictureBox PlayerStatsPictureBox;
     }
 }
