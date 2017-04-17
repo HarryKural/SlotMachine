@@ -81,7 +81,7 @@
             // 
             this.Bet1PictureBox.BackColor = System.Drawing.Color.Transparent;
             this.Bet1PictureBox.Image = global::SlotMachine.Properties.Resources.bet1;
-            this.Bet1PictureBox.Location = new System.Drawing.Point(71, 430);
+            this.Bet1PictureBox.Location = new System.Drawing.Point(71, 431);
             this.Bet1PictureBox.Name = "Bet1PictureBox";
             this.Bet1PictureBox.Size = new System.Drawing.Size(37, 35);
             this.Bet1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -94,7 +94,7 @@
             // 
             this.Bet2PictureBox.BackColor = System.Drawing.Color.Transparent;
             this.Bet2PictureBox.Image = global::SlotMachine.Properties.Resources.bet2;
-            this.Bet2PictureBox.Location = new System.Drawing.Point(114, 430);
+            this.Bet2PictureBox.Location = new System.Drawing.Point(114, 431);
             this.Bet2PictureBox.Name = "Bet2PictureBox";
             this.Bet2PictureBox.Size = new System.Drawing.Size(37, 35);
             this.Bet2PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -107,7 +107,7 @@
             // 
             this.Bet5PictureBox.BackColor = System.Drawing.Color.Transparent;
             this.Bet5PictureBox.Image = global::SlotMachine.Properties.Resources.bet5;
-            this.Bet5PictureBox.Location = new System.Drawing.Point(157, 430);
+            this.Bet5PictureBox.Location = new System.Drawing.Point(157, 431);
             this.Bet5PictureBox.Name = "Bet5PictureBox";
             this.Bet5PictureBox.Size = new System.Drawing.Size(37, 35);
             this.Bet5PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -120,7 +120,7 @@
             // 
             this.Bet10PictureBox.BackColor = System.Drawing.Color.Transparent;
             this.Bet10PictureBox.Image = global::SlotMachine.Properties.Resources.bet10;
-            this.Bet10PictureBox.Location = new System.Drawing.Point(200, 430);
+            this.Bet10PictureBox.Location = new System.Drawing.Point(200, 431);
             this.Bet10PictureBox.Name = "Bet10PictureBox";
             this.Bet10PictureBox.Size = new System.Drawing.Size(37, 35);
             this.Bet10PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -133,7 +133,7 @@
             // 
             this.Bet500PictureBox.BackColor = System.Drawing.Color.Transparent;
             this.Bet500PictureBox.Image = global::SlotMachine.Properties.Resources.bet500;
-            this.Bet500PictureBox.Location = new System.Drawing.Point(200, 465);
+            this.Bet500PictureBox.Location = new System.Drawing.Point(200, 466);
             this.Bet500PictureBox.Name = "Bet500PictureBox";
             this.Bet500PictureBox.Size = new System.Drawing.Size(37, 35);
             this.Bet500PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -146,7 +146,7 @@
             // 
             this.Bet100PictureBox.BackColor = System.Drawing.Color.Transparent;
             this.Bet100PictureBox.Image = global::SlotMachine.Properties.Resources.bet100;
-            this.Bet100PictureBox.Location = new System.Drawing.Point(157, 465);
+            this.Bet100PictureBox.Location = new System.Drawing.Point(157, 466);
             this.Bet100PictureBox.Name = "Bet100PictureBox";
             this.Bet100PictureBox.Size = new System.Drawing.Size(37, 35);
             this.Bet100PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -159,7 +159,7 @@
             // 
             this.Bet50PictureBox.BackColor = System.Drawing.Color.Transparent;
             this.Bet50PictureBox.Image = global::SlotMachine.Properties.Resources.bet50;
-            this.Bet50PictureBox.Location = new System.Drawing.Point(114, 465);
+            this.Bet50PictureBox.Location = new System.Drawing.Point(114, 466);
             this.Bet50PictureBox.Name = "Bet50PictureBox";
             this.Bet50PictureBox.Size = new System.Drawing.Size(37, 35);
             this.Bet50PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -172,7 +172,7 @@
             // 
             this.Bet25PictureBox.BackColor = System.Drawing.Color.Transparent;
             this.Bet25PictureBox.Image = global::SlotMachine.Properties.Resources.bet25;
-            this.Bet25PictureBox.Location = new System.Drawing.Point(71, 465);
+            this.Bet25PictureBox.Location = new System.Drawing.Point(71, 466);
             this.Bet25PictureBox.Name = "Bet25PictureBox";
             this.Bet25PictureBox.Size = new System.Drawing.Size(37, 35);
             this.Bet25PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

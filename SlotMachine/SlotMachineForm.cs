@@ -29,6 +29,7 @@ namespace SlotMachine
 {
     public partial class SlotMachineForm : Form
     {
+        // Instantiate variables
         private int playerMoney = 1000;
         private int winnings = 0;
         private int jackpot = 5000;
@@ -48,14 +49,18 @@ namespace SlotMachine
         private int bells = 0;
         private int sevens = 0;
         private int blanks = 0;
+
+        // setting variables (as SoundPlayer prop.) value to different sound files
         private SoundPlayer spinSound = new SoundPlayer(Properties.Resources.spinSound);
         private SoundPlayer winningSound = new SoundPlayer(Properties.Resources.winningSound);
         private SoundPlayer losingSound = new SoundPlayer(Properties.Resources.losingSound);
         private SoundPlayer jackpotSound = new SoundPlayer(Properties.Resources.jackpotSound);
         private SoundPlayer gameOverSound = new SoundPlayer(Properties.Resources.gameOverSound);
-
+        
+        // creating a random variable to generate ransom numbers
         private Random random = new Random();
 
+        // Constructor
         public SlotMachineForm()
         {
             InitializeComponent();
@@ -102,7 +107,7 @@ namespace SlotMachine
             lossNumber = 0;
             winRatio = 0.0f;
 
-            // reset textBox
+            // reset the text in textBoxes
             WinnerPaidTextBox.Text = null;
             BetTextBox.Text = playerBet.ToString();
             TotalCreditsTextBox.Text = playerMoney.ToString();
@@ -112,7 +117,8 @@ namespace SlotMachine
             ReelFirstPictureBox.Image = Properties.Resources.blank;
             ReelSecondPictureBox.Image = Properties.Resources.blank;
             ReelThirdPictureBox.Image = Properties.Resources.blank;
-        }
+
+        } // end of resetAll()
 
         /* Check to see if the player won the jackpot */
         private void checkJackPot()
@@ -122,9 +128,12 @@ namespace SlotMachine
             var jackPotWin = this.random.Next(51) + 1;
             if (jackPotTry == jackPotWin)
             {
+                // display message to the user
                 MessageBox.Show("You Won the $" + jackpot + " Jackpot!!", "Jackpot!!");
                 playerMoney += jackpot;
                 jackpot = 1000;
+
+                // using the Play() to play the sound
                 jackpotSound.Play();
                 // set the text of jackpot textBox
                 JackpotTextBox.Text = jackpot.ToString();
@@ -135,9 +144,12 @@ namespace SlotMachine
         private void showWinMessage()
         {
             playerMoney += winnings;
+
+            // playing winner sound
             winningSound.Play();
+            // set text to display winnings
             WinnerPaidTextBox.Text = "$ " + winnings;
-         // MessageBox.Show("You Won: $" + winnings, "Winner!");
+            // calling methods
             resetFruitTally();
             checkJackPot();
         }
@@ -146,9 +158,10 @@ namespace SlotMachine
         private void showLossMessage()
         {
             playerMoney -= playerBet;
+
+            // playing loss sound
             losingSound.Play();
             WinnerPaidTextBox.Text = "You Lost!";
-         // MessageBox.Show("You Lost!", "Loss!");
             resetFruitTally();
         }
 
@@ -166,7 +179,7 @@ namespace SlotMachine
             string[] betLine = { " ", " ", " " };
             int[] outCome = { 0, 0, 0 };
 
-            // create array of PictureBox to popluate them
+            // create array of PictureBox to popluate them with random images
             PictureBox[] setReel = new PictureBox[] { ReelFirstPictureBox, ReelSecondPictureBox, ReelThirdPictureBox };
 
             for (var spin = 0; spin < 3; spin++)
@@ -176,55 +189,63 @@ namespace SlotMachine
                 if (checkRange(outCome[spin], 1, 27))
                 {  // 41.5% probability
                     betLine[spin] = "blank";
+                    // setting reel pictureBox image as blank
                     setReel[spin].Image = Properties.Resources.blank;
                     blanks++;
                 }
                 else if (checkRange(outCome[spin], 28, 37))
                 { // 15.4% probability
                     betLine[spin] = "Grapes";
+                    // setting reel pictureBox image as grapes
                     setReel[spin].Image = Properties.Resources.grapes;
                     grapes++;
                 }
                 else if (checkRange(outCome[spin], 38, 46))
                 { // 13.8% probability
                     betLine[spin] = "Banana";
+                    // setting reel pictureBox image as banana
                     setReel[spin].Image = Properties.Resources.banana;
                     bananas++;
                 }
                 else if (checkRange(outCome[spin], 47, 54))
                 { // 12.3% probability
                     betLine[spin] = "Orange";
+                    // setting reel pictureBox image as orange
                     setReel[spin].Image = Properties.Resources.orange;
                     oranges++;
                 }
                 else if (checkRange(outCome[spin], 55, 59))
                 { //  7.7% probability
                     betLine[spin] = "Cherry";
+                    // setting reel pictureBox image as cherry
                     setReel[spin].Image = Properties.Resources.cherry;
                     cherries++;
                 }
                 else if (checkRange(outCome[spin], 60, 62))
                 { //  4.6% probability
                     betLine[spin] = "Bar";
+                    // setting reel pictureBox image as bar
                     setReel[spin].Image = Properties.Resources.bar;
                     bars++;
                 }
                 else if (checkRange(outCome[spin], 63, 64))
                 { //  3.1% probability
                     betLine[spin] = "Bell";
+                    // setting reel pictureBox image as bell
                     setReel[spin].Image = Properties.Resources.bell;
                     bells++;
                 }
                 else if (checkRange(outCome[spin], 65, 65))
                 { //  1.5% probability
                     betLine[spin] = "Seven";
+                    // setting reel pictureBox image as seven
                     setReel[spin].Image = Properties.Resources.seven;
                     sevens++;
                 }
 
             }
             return betLine;
-        }
+        } // end of Reels()
 
         /* This function calculates the player's winnings, if any */
         private void determineWinnings()
@@ -303,20 +324,29 @@ namespace SlotMachine
                 lossNumber++;
                 showLossMessage();
             }
-        }
+        } // end of determineWinnings()
 
+        /// <summary>
+        /// This method handle all the events when any pictureBox is
+        /// clicked and perform its task according to each Tag.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _pictureBoxButtonHandler(object sender, EventArgs e)
         {
             PictureBox PictureClickHandler = sender as PictureBox;
 
+            // assigns the Tag property as String
             switch (PictureClickHandler.Tag.ToString())
             {
+                // this case handles the spin button (picture) & perform its task
                 case "Spin":
-
                     if (playerMoney == 0)
                     {
+                        // display message when credit == 0
                         if (MessageBox.Show("You ran out of Money! \nDo you want to play again?", "Out of Money!", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
+                            // if OK then reset the game, play game over sound & display stats
                             resetAll();
                             gameOverSound.Play();
                             showPlayerStats();
@@ -332,6 +362,9 @@ namespace SlotMachine
                     }
                     else if (playerBet <= playerMoney)
                     {
+                       /* if bet < credits then play spin sound, sleep for 1.5 seconds
+                        * (means just sound will play & after 1.5 sec reels will change images & show result)
+                        */
                         spinSound.Play();
                         Thread.Sleep(1500);
                         spinResult = Reels();
@@ -347,6 +380,7 @@ namespace SlotMachine
                     }
                     break;
                 
+                // this case resets all the game by calling resetAll() method
                 case "Reset":
                     // showing up confirm message when reset (picture) button clicked
                     DialogResult reset = MessageBox.Show("Are You Sure you want to reset the game?" + Environment.NewLine + "Your current progress will be lost." , "Reset the Game", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
@@ -358,6 +392,7 @@ namespace SlotMachine
                     }
                     break;
                 
+                // this case exits the application (game) if OK pressed
                 case "Power":
                     // showing up confirm message when power (picture) button clicked
                     DialogResult exit = MessageBox.Show("Are You Sure you want to exit the game?", "Exit the game", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
@@ -368,19 +403,26 @@ namespace SlotMachine
                         Application.Exit();
                     }
                     break;
-            }
-        }
-        
+            } // end of switch
+        } // end of _pictureBoxButtonHandler
+
+        /// <summary>
+        /// This method handles the events on button click (reset & player stats)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _buttonHandler(object sender, EventArgs e)
         {
             Button ButtonClickHandler = sender as Button;
 
             switch (ButtonClickHandler.Tag.ToString())
             {
+                // this case displays the player stats by calling method
                 case "Player Stats":
                     showPlayerStats();
                     break;
 
+                // this case resets the current BET and changes it to 0 (zero)
                 case "Reset Bet":
                     playerBet = 0;
                     BetTextBox.Text = playerBet.ToString();
@@ -388,15 +430,30 @@ namespace SlotMachine
             }
         }
 
+        /// <summary>
+        /// This method handles the Bet buttons (pictures)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _betHandler(object sender, EventArgs e)
         {
+            // create an object PlaceBet as PictureBox
             PictureBox PlaceBet = sender as PictureBox;
 
+            // setting the value of playerBet = value of Tag for each one
+            // parsing into int
             playerBet = Int16.Parse(PlaceBet.Tag.ToString());
             
+            // set the value of bet textbox as calculated playerBet
             BetTextBox.Text = playerBet.ToString();
         }
         
+        /// <summary>
+        /// This method is used to populate the form with initial
+        /// data when the form (game) loads up
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SlotMachineForm_Load(object sender, EventArgs e)
         {
             // display text in jackpot & credits textBoxes
@@ -409,5 +466,5 @@ namespace SlotMachine
             ReelSecondPictureBox.Image = Properties.Resources.blank;
             ReelThirdPictureBox.Image = Properties.Resources.blank;
         }
-    }
-}
+    } // end of class
+} // end of namespace
