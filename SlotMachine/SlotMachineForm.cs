@@ -22,6 +22,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Media;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace SlotMachine
@@ -47,6 +48,11 @@ namespace SlotMachine
         private int bells = 0;
         private int sevens = 0;
         private int blanks = 0;
+        private SoundPlayer spinSound = new SoundPlayer(Properties.Resources.spinSound);
+        private SoundPlayer winningSound = new SoundPlayer(Properties.Resources.winningSound);
+        private SoundPlayer losingSound = new SoundPlayer(Properties.Resources.losingSound);
+        private SoundPlayer jackpotSound = new SoundPlayer(Properties.Resources.jackpotSound);
+        private SoundPlayer gameOverSound = new SoundPlayer(Properties.Resources.gameOverSound);
 
         private Random random = new Random();
 
@@ -54,7 +60,7 @@ namespace SlotMachine
         {
             InitializeComponent();
         }
-        
+
         /* Utility function to show Player Stats */
         private void showPlayerStats()
         {
@@ -119,6 +125,7 @@ namespace SlotMachine
                 MessageBox.Show("You Won the $" + jackpot + " Jackpot!!", "Jackpot!!");
                 playerMoney += jackpot;
                 jackpot = 1000;
+                jackpotSound.Play();
                 // set the text of jackpot textBox
                 JackpotTextBox.Text = jackpot.ToString();
             }
@@ -128,6 +135,7 @@ namespace SlotMachine
         private void showWinMessage()
         {
             playerMoney += winnings;
+            winningSound.Play();
             WinnerPaidTextBox.Text = "$ " + winnings;
          // MessageBox.Show("You Won: $" + winnings, "Winner!");
             resetFruitTally();
@@ -138,6 +146,7 @@ namespace SlotMachine
         private void showLossMessage()
         {
             playerMoney -= playerBet;
+            losingSound.Play();
             WinnerPaidTextBox.Text = "You Lost!";
          // MessageBox.Show("You Lost!", "Loss!");
             resetFruitTally();
@@ -309,6 +318,7 @@ namespace SlotMachine
                         if (MessageBox.Show("You ran out of Money! \nDo you want to play again?", "Out of Money!", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             resetAll();
+                            gameOverSound.Play();
                             showPlayerStats();
                         }
                     }
@@ -322,6 +332,8 @@ namespace SlotMachine
                     }
                     else if (playerBet <= playerMoney)
                     {
+                        spinSound.Play();
+                        Thread.Sleep(1500);
                         spinResult = Reels();
                         determineWinnings();
                         turn++;
@@ -384,7 +396,7 @@ namespace SlotMachine
             
             BetTextBox.Text = playerBet.ToString();
         }
-
+        
         private void SlotMachineForm_Load(object sender, EventArgs e)
         {
             // display text in jackpot & credits textBoxes

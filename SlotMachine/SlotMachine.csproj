@@ -98,14 +98,19 @@
     <Content Include="Resources\bet_line.gif" />
     <Content Include="Resources\blank.gif" />
     <Content Include="Resources\cherry.gif" />
+    <None Include="Resources\gameOverSound.wav" />
     <Content Include="Resources\grapes.gif" />
+    <None Include="Resources\jackpotSound.wav" />
+    <None Include="Resources\losingSound.wav" />
     <Content Include="Resources\orange.gif" />
+    <None Include="Resources\winningSound.wav" />
     <None Include="Resources\player_stats_button.png" />
     <Content Include="Resources\powerbutton.gif" />
     <Content Include="Resources\reset.gif" />
     <Content Include="Resources\seven.gif" />
     <Content Include="Resources\slotmachine.gif" />
     <Content Include="Resources\spin.gif" />
+    <None Include="Resources\spinSound.wav" />
     <Content Include="Resources\spin_disabled.gif" />
     <Content Include="Resources\spin_pressed.gif" />
   </ItemGroup>
