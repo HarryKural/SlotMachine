@@ -243,7 +243,7 @@ namespace SlotMachine
                     sevens++;
                 }
 
-            }
+            } // end of for()
             return betLine;
         } // end of Reels()
 
